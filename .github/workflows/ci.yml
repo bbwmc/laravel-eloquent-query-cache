@@ -31,10 +31,13 @@ jobs:
         include:
           - laravel: 9.*
             testbench: 7.*
+            livewire: 2.*
           - laravel: 10.*
             testbench: 8.*
+            livewire: 3.*
           - laravel: 11.*
             testbench: 9.*
+            livewire: 3.*
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} --${{ matrix.prefer }}
 
@@ -56,7 +59,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+        composer require "laravel/framework:${{ matrix.laravel }}" "livewire/livewire:${{ matrix.testbench }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
         composer update --${{ matrix.prefer }} --prefer-dist --no-interaction --no-suggest
 
     - name: Run tests
